@@ -1,0 +1,64 @@
+*{margin:0;padding:0;}
+
+#mananas {
+    background: aquamarine;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.dyLocation {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+}
+
+#actions svg{
+    width: 1.5em;
+    height: 1.5em;
+    transition: all 0.3s;
+    margin: 0 10px;
+}
+#actions svg.active{
+    fill: red;
+    transform: scale(1.2);
+}
+
+#clear:hover{
+    fill: red;
+    transform: scale(1.2);
+}
+
+.color {
+    position: fixed;
+    top: 60px;
+    left: 10px;
+}
+
+.color > li {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    margin: 10px 0;
+    transition: all 0.3s;
+}
+
+.color > li.red {
+    background: red;
+}
+
+.color > li.yellow {
+    background: yellow;
+}
+
+.color > li.blue {
+    background: blue;
+}
+
+.color > li.active {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.95);
+    transform: scale(1.2);
+}
+
+ul,ol{list-style: none;}
