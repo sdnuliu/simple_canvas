@@ -16,10 +16,10 @@ window.onload = function () {
         if (pageWidth > myCanvas.width) {
             myCanvas.width = pageWidth
             myCanvas.height = pageHeight
-            context.fillStyle = 'aquamarine'
-            context.fillRect(0, 0, myCanvas.width, myCanvas.height)
 
         }
+        context.fillStyle = 'aquamarine'
+        context.fillRect(0, 0, myCanvas.width, myCanvas.height)
         context.drawImage(inMemCanvas, 0, 0);
     }
 
@@ -82,6 +82,8 @@ window.onload = function () {
 
     function onTouchEvent() {
         myCanvas.ontouchstart = function (touchStartEv) {
+            touchStartEv.preventDefault()
+            touchStartEv.stopPropagation()
             var startX = touchStartEv.touches[0].clientX
             var startY = touchStartEv.touches[0].clientY
             console.log(startX)
@@ -89,13 +91,17 @@ window.onload = function () {
             onMouseOrTouchDown(startX, startY)
         }
         myCanvas.ontouchmove = function (touchMoveEv) {
+            touchMoveEv.preventDefault()
+            touchMoveEv.stopPropagation()
             var moveX = touchMoveEv.touches[0].clientX
             var moveY = touchMoveEv.touches[0].clientY
             if (!isUsing) return
             onMouseOrTouchMove(moveX, moveY)
 
         }
-        myCanvas.ontouchend = function () {
+        myCanvas.ontouchend = function (touchEndEv) {
+            touchEndEv.preventDefault()
+            touchEndEv.stopPropagation()
             isUsing = false
         }
     }
@@ -119,12 +125,11 @@ window.onload = function () {
             context.clearRect(0, 0, myCanvas.width, myCanvas.height)
         }
         download.onclick = function (ev) {
-            var url = inMemCanvas.toDataURL('image/png')
+            var image = myCanvas.toDataURL("image/jpg");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
             var a = document.createElement('a')
-            document.body.appendChild(a)
-            a.href = url
-            a.download = '作品'
-            a.target = '_blank'
+            // document.body.appendChild(a)
+            a.href = image
+            a.download = 'work.png'
             a.click()
         }
         redPen.onclick = function (ev) {

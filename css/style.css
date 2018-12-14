@@ -1,10 +1,15 @@
 *{margin:0;padding:0;}
 
 #mananas {
+    display: block;
     background: aquamarine;
     position: fixed;
     top: 0;
     left: 0;
+}
+
+body{
+    overflow: hidden;
 }
 
 .dyLocation {
@@ -24,7 +29,7 @@
     transform: scale(1.2);
 }
 
-#clear:hover{
+#clear:hover,#download:hover{
     fill: red;
     transform: scale(1.2);
 }
