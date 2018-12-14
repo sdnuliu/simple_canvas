@@ -125,7 +125,7 @@ window.onload = function () {
             context.clearRect(0, 0, myCanvas.width, myCanvas.height)
         }
         download.onclick = function (ev) {
-            var image = myCanvas.toDataURL("image/jpg");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+            var image = myCanvas.toDataURL("image/jpg");
             var a = document.createElement('a')
             // document.body.appendChild(a)
             a.href = image
